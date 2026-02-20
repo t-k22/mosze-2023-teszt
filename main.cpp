@@ -4,23 +4,24 @@ constexpr int N_ELEMENTS = 100;
 
 int main()
 {
-    // int *b = new int[NELEMENTS]; // HIBA: NELEMENTS nincs definiálva (N_ELEMENTS a helyes)
-    // std::cout << '1-100 ertekek duplazasa' // HIBA: szimpla idézőjel és hiányzó pontosvessző
-    // for (int i = 0;) // HIBA: hiányzó feltétel és növekmény
+    int *b = new int[N_ELEMENTS];
+    std::cout << "1-100 ertekek duplazasa" << std::endl;
+    for (int i = 0; i < N_ELEMENTS; i++)
     {
-        // b[i] = i * 2;
+        b[i] = (i + 1) * 2;
     }
-    // for (int i = 0; i; i++) // HIBA: a ciklusfeltétel hibás (i=0-nál kilép)
+    for (int i = 0; i < N_ELEMENTS; i++)
     {
-        // std::cout << "Ertek:" // HIBA: hiányzó pontosvessző és érték
+        std::cout << "Ertek: " << b[i] << std::endl;
     }    
     std::cout << "Atlag szamitasa: " << std::endl;
-    // int atlag; // HIBA: nincs inicializálva (garbage value)
-    // for (int i = 0; i < N_ELEMENTS, i++) // HIBA: vessző pontosvessző helyett
+    int atlag = 0;
+    for (int i = 0; i < N_ELEMENTS; i++)
     {
-        // atlag += b[i] // HIBA: hiányzó pontosvessző
+        atlag += b[i];
     }
-    // atlag /= N_ELEMENTS;
-    // std::cout << "Atlag: " << atlag << std::endl;
-    // return 0; // HIBA: memóriaszivárgás (delete[] b hiányzik)
+    atlag /= N_ELEMENTS;
+    std::cout << "Atlag: " << atlag << std::endl;
+    delete[] b;
+    return 0;
 }
